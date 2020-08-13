@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PopUp</title>
+  <style>
+    .pop-up{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,.9);
+      opacity: 0;
+      transition: all .5s;
+      overflow-y: scroll;
+    }
+
+    .pop-up img{
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .close-btn{
+      position: fixed;
+      top: .5em;
+      right: 1.5em;
+    }
+
+    .fade-in{
+      opacity: 1;
+      transition: all 1s;
+    }
+
+    .fade-out{
+      opacity: 0;
+      transition: all 1s;
+    }
+  </style>
+
+</head>
+<body>
+  <button onClick="showPopup('herematch-poster2');">
+    Open Pop Up 1
+  </button>
+
+  <button onClick="showPopup('men-on-the-move-1');">Open Pop Up 2</button>
+
+  <script>
+
+  var imgUrl = "http://jkollias.com/assets/img/posters/";
+// ollias.com/assets/img/posters/herematch-poster2.jpg
+
+  var fadeIn = function(ele){
+    setTimeout(function(){
+      document.getElementById(ele).classList.add("fade-in");
+    }, 250);
+  }
+
+
+  var showPopup = function(item){
+    document.body.style.overflowY = "hidden";
+    let popUp = document.createElement("div");
+    let btn = document.createElement("button");
+    let image = document.createElement("img");
+    btn.classList.add("close-btn");
+    btn.onclick = function() {
+      removePopUp(item);
+
+    };
+    btn.innerHTML = "<span>Close</span>";
+    popUp.id = item+"-popup";
+    popUp.classList.add("pop-up");
+    image.src = imgUrl+item+".jpg";
+    document.body.appendChild(popUp);
+    popUp.appendChild(btn);
+    popUp.appendChild(image);
+    fadeIn(item+"-popup");
+    if(image.width > image.height){
+      image.setAttribute("style","width: 80%; height: auto; max-width:" +image.naturalWidth+ "px");
+    }else{
+      image.setAttribute("style","width: auto; height: 80%;");
+    }
+  }
+
+  var removePopUp = function(item){
+    document.body.style.overflowY = "scroll";
+    document.getElementById(item+"-popup").classList.add("fade-out");
+    let popUp = document.getElementById(item+"-popup");
+    setTimeout(function(){
+      document.body.removeChild(popUp);
+    }, 500);
+  }
+  </script>
+</body>
+</html>

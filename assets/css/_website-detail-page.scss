@@ -1,0 +1,267 @@
+
+
+section.project-overview{
+  padding: 2.5em 0 2.5em;
+  font-size: 1.6em;
+  .container{
+    @include main-container;
+  }
+  dl{
+    display: flex;
+    width: 100%;
+  }
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  dt{ width: 60%; }
+  dt h2{ padding-bottom: 1em; }
+  dd{
+    width: 40%;
+    padding: 0 2.5em;
+    box-sizing: border-box;
+  }
+  dd p{ font-size: 1em; }
+  .launch-project-link{
+    background: $red;
+    text-transform: uppercase;
+    color: #fff;
+    display: inline-block;
+    padding: .5em 1em;
+    font-size: .75em;
+    margin-top: 1em;
+  }
+}
+
+.my-roles{
+  background: #222;
+  border-top: $red .5em solid;
+  padding: 2.5em 0;
+  font-size: 1.6em;
+  border-bottom: $red .5em solid;
+  color: #fff;
+  .container{
+     @include main-container;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    li{
+      padding: .1em 0 .1em 1em;
+      position: relative;
+    }
+    li:before{
+      content: ".";
+      text-indent: -100em;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      height: .5em;
+      width: .5em;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
+}
+
+
+.slider-container{
+  margin-bottom: 2.5em;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  height: 280px;
+  @media only screen and (min-width: 800px) {
+    height: 380px;
+  }
+  @media only screen and (min-width: 1300px) {
+    height: 490px;
+  }
+  &:after{ @include clearFix; }
+
+
+  ul#slider{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    transition: left 1s;
+  }
+  ul#slider:after{ @include clearFix; }
+  ul#slider li{ margin: 0; padding: 0;}
+  .slide{
+    float: left;
+  }
+  figcaption{ font-size: 1.8em; }
+
+  .screen-container{
+    background: #ccc;
+    width: 300px;
+    margin: 0 auto;
+    height: 250px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    border: 1px solid #efefef;
+
+    @media only screen and (min-width: 800px) {
+      width: 640px;
+      height: 350px;
+    }
+    @media only screen and (min-width: 1300px) {
+      width: 800px;
+      height: 460px;
+    }
+
+  }
+  .screen-container img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .previous-btn{
+    position: absolute;
+    height: 100%;
+    width: 30px;
+    position: left;
+    top: 0;
+    left: 1em;
+    //background: linear-gradient( to right, #cdcdcd, #acacac);
+  }
+  .previous-btn:hover{
+    border-color: darken($red, 10%);
+  }
+  .previous-btn:active{
+    border-color: #000;
+  }
+  .previous-btn:after{
+    display: block;
+    width: 1em;
+    height: 1em;
+    content: ".";
+    /*border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;*/
+    border-left: 3px solid $red;
+    border-bottom: 3px solid $red;
+    transform: rotate(45deg);
+    overflow: hidden;
+    text-indent: -100em;
+  }
+  .next-btn{
+    position: absolute;
+    height: 100%;
+    width: 30px;
+    position: left;
+    top: 0;
+    right: 1em;
+    //background: linear-gradient( to right, #cdcdcd, #acacac);
+  }
+  .next-btn:hover:after{
+    border-color: darken($red, 10%);
+  }
+  .next-btn:active:after{
+    border-color: #000;
+  }
+  .next-btn:after{
+    display: block;
+    width: 1em;
+    height: 1em;
+    content: ".";
+    border-right: 3px solid $red;
+    border-top: 3px solid $red;
+    transform: rotate(45deg);
+    overflow: hidden;
+    text-indent: -100em;
+  }
+
+  .previous-btn.inactive-btn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+
+  .next-btn.inactive-btn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+
+}
+
+.button-container{
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 2.5em 0;
+  text-align: center;
+  .launch-project-link{
+    background: $red;
+    text-transform: uppercase;
+    color: #fff;
+    display: inline-block;
+    padding: .5em 1em;
+    font-size: 2em;
+    border-radius: .25em;
+  }
+  .launch-project-link:hover{
+    background: darken($red,10);
+  }
+}
+
+.project-info-row{
+  background: #333;
+  padding: 3em;
+  color: #fff;
+
+  .flex{
+    font-size: 1.6em;
+    background: #222;
+    margin: 0;
+    padding: 0;
+    @media only screen and (min-width: $tabPort){
+      display: flex;
+	  max-width: 1400px;
+	  margin-left: auto;
+	  margin-right: auto;
+	  //@include main-container;
+    }
+  }
+  .flex > li{
+    padding: .9em;
+	box-sizing: border-box;
+    @media only screen and (min-width: $tabPort){
+      padding: 3em;
+      flex-basis: 50%;
+
+    }
+  }
+  h2{
+    font-weight: 400;
+    text-transform: normal;
+    font-size: 1.2em;
+    text-transform: none;
+    @media only screen and (min-width: $tabPort){
+      font-size: 1.2em;
+    }
+  }
+  dl ul{ margin-left: 2em;}
+  dl li{
+    position: relative;
+  }
+  dl li:before{
+    content:".";
+    width: .25em;
+    height: .25em;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: -1em;
+    top: .5em;
+    background: #fff;
+    overflow: hidden;
+    text-indent: -1000em;
+  }
+  button{ color: #fff; }
+}

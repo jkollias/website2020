@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Jason Kollias | Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+
+<link href="assets/css/reset.css" rel="stylesheet">
+
+<link href="assets/css/layout.css" rel="stylesheet">
+
+
+
+</head>
+
+
+
+<body class="contact-page">
+
+
+
+  <header class="page-title">
+
+    <a href="index.html" class="back-link">
+
+      <i class="fa fa-sort-down"></i>
+
+      <span class="screen-reader">Back</span>
+
+    </a>
+
+    <h1>Contact</h1>
+
+  </header>
+
+  <div class="offset"></div>
+
+  <main>
+
+
+
+      <div class="container">
+
+        <p>Interested in hiring me? Please fill out the form below.</p>
+
+
+
+        <section class="contact-info">
+
+          <section class="contact-form">
+
+            <form action="/form/formmail.php" method="post">
+
+              <input type="hidden" name="subject" value="Submission" />
+
+              <input type="hidden" name="redirect" value="/form/thanks.html" />
+
+              <input type="hidden" name="env_report" value="REMOTE_HOST,REMOTE_ADDR,HTTP_USER_AGENT,AUTH_TYPE,REMOTE_USER" />
+
+              <input type="hidden" name="recipients" value="j_kollias@yahoo.com" />
+
+              <input type="hidden" name="required" value="EmailAddr:Your email address,FullName:Your name" />
+
+              <input type="hidden" name="subject" value="Contact Jason Kollias" />
+
+              <input type="hidden" name="derive_fields" value="email=EmailAddr,realname=FullName" />
+
+              <input type="hidden" name="mail_options" value="Exclude=email;realname" />
+
+              <input type="hidden" name="good_url" value="http://jkollias.com/form/thanks.html" />
+
+              <input type="hidden" name="bad_url" value="http://jkollias.com/form/error.html" />
+
+              <label>Name:<br>
+
+                <input type="text" name="FullName" />
+
+              </label>
+
+              <label>Email:<br>
+
+                <input type="text" name="EmailAddr" /></label>
+
+              <label>Comments:<br>
+
+                <textarea name="comments"></textarea>
+
+              </label>
+
+              <input type="submit" name="submit" value="submit"/>
+
+              <div style="display: none">
+
+              <input type="hidden" name="form_order" value="alpha"/>
+
+              <input type="hidden" name="form_delivery" value="hourly_digest"/>
+
+              <input type="hidden" name="form_format" value="html"/>
+
+              </div>
+
+            </form>
+
+          </section>
+
+          <section class="contact-links">
+
+            Connect with me on <a href="https://www.linkedin.com/in/jason-kollias-ab2680a/" target="_blank">linkedin</a><br>
+
+            Download my <a href="assets/jason-kollias-front-end-developer.pdf" target="_blank">resume</a><br>
+
+            Send me an <a href="mailto:j_kollias@yahoo.com">email</a><br>
+
+          </section>
+
+        </section>
+
+
+
+
+
+      </div>
+
+
+
+  </main>
+
+
+
+<script src="assets/js/interactive.js" type="text/javascript"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119261596-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119261596-1');
+</script>
+
+
+</body>
+
+</html>

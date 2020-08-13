@@ -1,0 +1,124 @@
+.webdesign-project-title{
+  color: #222;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: 1em 0;
+  /*position: relative;*/
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 3000;
+  background: #fff;
+  left: 0;
+  .back-link{
+    display: block;
+    position: absolute;
+    left: 1em;
+    transform: translateY(-50%);
+    top: 50%;
+    background: #000;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    font-size: 1.6em;
+  }
+  .back-link:hover{ background: $red; }
+  .back-link i{
+    display: block;
+    transform: translateY(-50%) rotate(90deg);
+    top: 50%;
+    line-height: 1;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    color: #fff;
+    font-size: 1.5em;
+    margin-left: .35em;
+  }
+  h1{ font-size: 3.2em;}
+}
+
+.project-overview{
+  padding: 2.5em 0 2.5em;
+  font-size: 1.6em;
+  .container{
+    @include main-container;
+  }
+  dl{
+    display: flex;
+    width: 100%;
+  }
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  dt{ width: 60%; }
+  dd{
+    width: 40%;
+    padding: 0 2.5em;
+    box-sizing: border-box;
+  }
+  .launch-project-link{
+    background: $red;
+    text-transform: uppercase;
+    color: #fff;
+    display: inline-block;
+    padding: .5em 1em;
+    font-size: .75em;
+    margin-top: 1em;
+  }
+}
+
+.my-roles{
+  background: #222;
+  border-top: $red .5em solid;
+  padding: 2.5em 0;
+  font-size: 1.6em;
+  border-bottom: $red .5em solid;
+  color: #fff;
+  .container{
+     @include main-container;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    li{
+      padding: .1em 0 .1em 1em;
+      position: relative;
+    }
+    li:before{
+      content: ".";
+      text-indent: -100em;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      height: .5em;
+      width: .5em;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
+}
+
+.additional-screens{
+  padding: 2.5em 0;
+  margin-bottom: 5em;
+  font-size: 1.6em;
+  .slider:after{
+    @include clearFix;
+  }
+  .slider{ display: flex; }
+  .slider li{ flex-basis: 33.3333%;
+    text-align: center;
+  }
+  .slider img{
+    background: #222;
+    width: 300px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+}

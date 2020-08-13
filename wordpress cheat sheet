@@ -1,0 +1,650 @@
+
+
+Get the URL of the site
+
+&lt;?php echo site_url(); ?&gt;
+
+
+Get The Hompage URL
+&lt;?php echo esc_url( home_url( '/' ) ); ?&gt;
+
+
+
+
+
+&lt;?php print_custom_field('my_pdf:get_post','&lt;a href="[+guid+]"&gt;Download PDF&lt;/a&gt;'); ?&gt;
+
+OR
+
+&lt;a href="&lt;?php print_custom_field('my_pdf:get_post','guid'); ?&gt;"&gt;Download PDF&lt;/a&gt;
+
+Different Code on Home Page
+
+&lt;?php if (is_front_page()) { ?&gt;
+&lt;!------ Styles/Scripts for my Home page ----------&gt;
+&lt;?php } ?&gt;
+
+Fixing upload on custom post Plugin
+
+locat
+
+wp-content/plugins/custom-content-type-manager/css/manager.css
+
+update
+
+body.modal-open {
+    overflow: visible!important;
+ }
+
+
+Adding Paging
+
+&lt;?php
+        // we add this, to show all posts in our
+        // Glossary sorted alphabetically
+        $posts = query_posts($query_string .
+        '&orderby=date&order=dec&posts_per_page=10'); ?&gt;
+
+'&orderby=date&order=dec&posts_per_page=10'); ?&gt;
+
+
+
+Calendar Of Events
+
+Use The Events Calendar by Modern Tribe
+
+in the setting rewrite the clandar slug
+
+
+Removing cropping from featured image
+
+in functions.php
+1) search for set_post_thumbnail_size function
+2) change set_post_thumbnail_size( 825, 510, true ); to set_post_thumbnail_size( NEWWIDTH, NEWHEIGHT  );
+
+
+Tiney MCE Import a wysiwyg stylesheet
+
+add this code to a functions.php file
+
+&lt;?php
+function my_theme_add_editor_styles() {
+    add_editor_style( 'editor-style.css' );
+}
+add_action( 'admin_init', 'my_theme_add_editor_styles' );
+?&gt;
+
+
+Creating Sublinks for Child pages with Shortcodes
+
+function wpb_list_child_pages() {
+  global $post;
+  if ( is_page() && $post-&gt;post_parent )
+     $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post-&gt;post_parent . '&echo=0' );
+    else
+    $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post-&gt;ID . '&echo=0' );
+    if ( $childpages ) {
+       $string = '&lt;ul class="subpages"&gt;' . $childpages . '&lt;/ul&gt;';
+        }
+    return $string;
+  }
+
+add_shortcode('wpb_childpages', 'wpb_list_child_pages');
+
+
+
+On the page use
+[wpb_childpages]
+
+
+Making A Custom Page
+
+Duplicate the (singular.php : hybrid) or (page.php : twentyfifteen)
+
+
+At the top replace
+
+
+Call A Short code Using PHP
+
+
+&lt;?php echo do_shortcode( $content ) ?&gt;
+
+or
+
+&lt;? echo do_shortcode( '[jw_easy_logo slider_name="Logos Slider"]' ); ?&gt;
+
+
+Redirect to a Custom Page With Form Builder
+
+Create a new field on your form, and select followup page as the field type. This is a special field just for indicating a followup url, once the form has been submitted. Put the url you want people to be redirected to in the field value.
+
+Reference A WYSIWYG Stylesheet using with a custom functions.php
+
+
+function my_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'admin_init', 'my_theme_add_editor_styles' );
+
+
+Display the Search Form
+
+&lt;?php the_widget( 'WP_Widget_Search'); ?&gt;
+
+footer-nav-links
+main-nav-links
+mobile-nav-links
+
+
+How To force Menu link to Open in A New Window
+1) Go to edit the menus page
+2) Click on screen options at the top left
+3) Check Link Target
+
+
+Adding A Custom Image Size
+add_image_size( 'custom-size', 220, 180 );
+
+
+
+
+
+How to Call the Featured Image As A BG
+
+&lt;?php global $post; ?&gt;
+&lt;?php
+$src = wp_get_attachment_image_src( get_post_thumbnail_id($post-&gt;ID), array( 5600,1000 ), false, '' );
+?&gt;
+&lt;div style="background: url(&lt;?php echo $src[0]; ?&gt; ) !important;"&gt;text &lt;/div&gt;
+
+
+
+
+
+
+How to Call A Specific Category
+
+This is calls a blog category posts
+
+&lt;?php $args = array( 'category_name' =&gt; 'blog' );  ?&gt;
+&lt;?php $qry = new WP_Query( $args ); ?&gt;
+
+
+This is what worked for Lincoln IT
+
+&lt;?php
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $args = array(
+            'category_name' =&gt; 'blog',
+            'posts_per_page' =&gt; 5,
+            'paged' =&gt; $paged,
+    );
+?&gt;
+&lt;?php $qry = new WP_Query( $args ); ?&gt;
+&lt;?php if ( $qry-&gt;have_posts() ) : ?&gt;
+
+You can also use this
+
+
+&lt;?php query_posts(
+array ( 'category_name' =&gt; 'global-hot-spots', 'posts_per_page' =&gt; -1 ) );
+   while ( have_posts() ) : the_post(); ?&gt;
+  &lt;article class="hot-spot"&gt;
+    &lt;h4&gt;&lt;?php the_title(); ?&gt; - &lt;?php echo get_the_date(); ?&gt;&lt;/h4&gt;
+    &lt;?php the_content(); ?&gt;
+  &lt;/article&gt;
+&lt;?php endwhile; wp_reset_query(); ?&gt;
+
+
+How to Call All Categories and All Posts
+
+&lt;?php
+
+    $args = array(
+        'post_type' =&gt; 'properties'
+    );
+
+    $categories = get_categories( $args );
+
+    foreach ( $categories as $category ) {
+
+        echo '&lt;h2&gt;' . $category-&gt;name . '&lt;/h2&gt;';
+
+        $args['category'] = $category-&gt;term_id;
+        $posts = get_posts($args); ?&gt;
+
+        &lt;div class="menu-items-container"&gt;
+            &lt;?php foreach($posts as $post) { ?&gt;
+                &lt;p&gt;&lt;?php the_title(); ?&gt;&lt;/p&gt;
+            &lt;?php  } ?&gt;
+        &lt;/div&gt;
+&lt;?php } ?&gt;
+
+            &lt;?php endwhile; wp_reset_query(); ?&gt;
+
+
+How to call a post from a category
+
+This function, actually a filter, finds the category slug(s) for the post and checks if there is a template file called single-[slug].php in the theme. If there is, that tempalte is used in place of single.php. So for example if you have a category called Portfolio with the slug “portfolio” you can create a new file called single-portfolio.php that will then become the custom single post template for posts assigned to this category.
+
+add_filter('single_template', create_function(
+    '$the_template',
+    'foreach( (array) get_the_category() as $cat ) {
+        if ( file_exists(TEMPLATEPATH . "/single-{$cat-&gt;slug}.php") )
+        return TEMPLATEPATH . "/single-{$cat-&gt;slug}.php"; }
+    return $the_template;' )
+);
+
+How add vcards to media upload
+
+
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ){
+// add your extension to the array
+$existing_mimes['vcf'] = 'text/x-vcard'; return $existing_mimes;
+}
+
+
+
+
+Display Custom Posts Type On Category Page
+
+function add_custom_types_to_tax( $query ) {
+    if( is_category() || is_tag() && empty( $query-&gt;query_vars['suppress_filters'] ) ) {
+      // Get all your post types
+      $post_types = array( 'nav_menu_item', ‘CHANGE THIS TO CUSTOM POST’ );
+
+      $query-&gt;set( 'post_type', $post_types );
+      return $query;
+    }
+}
+add_filter( 'pre_get_posts', 'add_custom_types_to_tax' );
+
+
+Display Category Descriptions
+
+&lt;?php echo category_description(); ?&gt;
+
+
+Alphabetize Custom Posts Types On Custom Archive Page
+
+Replace &lt;?php if ( have_posts() ) : ?&gt; with:
+
+&lt;?php
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$args = array(
+  'post_type' =&gt; ‘ADD YOUR CUSTOM POST’,
+  'orderby'=&gt; 'title',
+  'posts_per_page' =&gt; 12,
+  'paged'          =&gt; $paged,
+  'order' =&gt; 'ASC' );
+
+$the_query = new WP_Query( $args );
+
+// Pagination fix
+    $temp_query = $wp_query;
+    $wp_query   = NULL;
+    $wp_query   = $the_query;
+?&gt;
+&lt;?php if ( $the_query-&gt;have_posts() ) : ?&gt;
+
+
+
+Change while ( have_posts() ) : the_post(); to:
+
+while ( $the_query-&gt;have_posts() ) : $the_query-&gt;the_post();
+
+
+Add A Custom Post as a Short Code.
+
+Add this to your functions
+
+function display_custom_post_type(){
+     $args = array(
+        'post_type' =&gt; ‘THIS IS YOUR POST TYPE’,
+        'post_status' =&gt; 'publish'
+    );
+
+    $string = '';
+    $query = new WP_Query( $args );
+    if( $query-&gt;have_posts() ){
+        $string .= '&lt;dl class="timeline-list"&gt;';
+        while( $query-&gt;have_posts() ){
+            $query-&gt;the_post();
+            $string .= '&lt;dt&gt;' . get_the_title() . '&lt;/dt&gt;   &lt;dd&gt;' . get_the_content() . '&lt;/dd&gt;'   ;
+        }
+        $string .= '&lt;/dl&gt;';
+    }
+    wp_reset_postdata();
+    return $string;
+}
+
+add_shortcode( ‘YOU_SHORT_CODE_TEXT’, 'display_custom_post_type' );
+
+On the Page you want it to show use
+
+[YOU_SHORT_CODE_TEXT]
+
+
+Manipulating the Archive Loop
+
+Add this before &lt;?php if ( have_posts() )  : ?&gt;
+&lt;?php
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$args = array(
+  'post_type' =&gt; 'partners',
+  'orderby'=&gt; 'title',
+  'posts_per_page' =&gt; 500,
+  'paged'          =&gt; $paged,
+  'order' =&gt; 'ASC' );
+
+$the_query = new WP_Query( $args );
+
+// Pagination fix
+    $temp_query = $wp_query;
+    $wp_query   = NULL;
+    $wp_query   = $the_query;
+?&gt;
+
+On this line change &lt;?php if ( have_posts() )  : ?&gt; to &lt;?php if ( $the_query-&gt;have_posts() )  : ?&gt;
+
+On this line change  &lt;?php while ( have_posts() ) : the_post();  ?&gt;
+ to &lt;?php while ( $the_query-&gt;have_posts() ) : $the_query-&gt;the_post();  ?&gt;
+
+
+Use the Loop to Reference a Custom Post set to a post category
+
+&lt;?php
+    // Start the Loop.
+    query_posts(array (
+      'post_type' =&gt; ‘YOUR POST TYPE’,
+      'category_name' =&gt; 'YOUR CATEGORY NAME’,
+      'posts_per_page' =&gt; -1
+    ) );
+while ( have_posts() ) : the_post(); ?&gt;
+
+
+How to Create a Page that Displays Random Posts
+
+&lt;?php
+query_posts(array('orderby' =&gt; 'rand', 'showposts' =&gt; 1));
+if (have_posts()) :
+while (have_posts()) : the_post(); ?&gt;
+
+&lt;h1&gt;&lt;a href="&lt;?php the_permalink() ?&gt;"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;?php the_content(); ?&gt;
+
+&lt;?php endwhile;
+endif; ?&gt;
+
+
+How to Display any External RSS Feed on Your Site
+&lt;?php include_once(ABSPATH.WPINC.'/feed.php');
+$rss = fetch_feed('http://feeds.feedburner.com/wpbeginner');
+$maxitems = $rss-&gt;get_item_quantity(5);
+$rss_items = $rss-&gt;get_items(0, $maxitems);
+?&gt;
+&lt;ul&gt;
+&lt;?php if ($maxitems == 0) echo '&lt;li&gt;No items.&lt;/li&gt;';
+else
+// Loop through each feed item and display each item as a hyperlink.
+foreach ( $rss_items as $item ) : ?&gt;
+&lt;li&gt;
+&lt;a href='&lt;?php echo $item-&gt;get_permalink(); ?&gt;'
+title='&lt;?php echo 'Posted '.$item-&gt;get_date('j F Y | g:i a'); ?&gt;'&gt;
+&lt;?php echo $item-&gt;get_title(); ?&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;?php endforeach; ?&gt;
+&lt;/ul&gt;
+
+
+Archive Loop: Order By Custom Field
+
+$args = array(
+  'post_type' =&gt; 'team-members',
+  'meta_key'=&gt; ‘your_custom_field’,
+  'orderby' =&gt; 'your_custom_field',
+  'posts_per_page' =&gt; -1,
+  'paged'          =&gt; $paged,
+  'order' =&gt; 'ASC'
+);
+
+Reference a post URL
+
+Within the loop add
+
+&lt;a href="&lt;?php the_permalink(); ?&gt; "&gt;MY Link &lt;/a&gt;
+
+
+How to add pagination to looped pages
+
+This was a fix for globegistics notice the red.
+
+
+&lt;?php
+   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+   $args = array(
+    'category_name' =&gt; 'global-hot-spots',
+    'posts_per_page' =&gt; 5,
+    'paged'          =&gt; $paged,
+            );
+
+    $wp_query  = new WP_Query( $args );
+
+
+            if ( $wp_query-&gt;have_posts() ) {
+              while ( $wp_query-&gt;have_posts() ) {
+                  $wp_query-&gt;the_post();?&gt;
+                    &lt;article class="hot-spot"&gt;
+                      &lt;h2&gt;&lt;?php the_title(); ?&gt; - &lt;?php echo get_the_date(); ?&gt;&lt;/h2&gt;
+                      &lt;?php the_content(); ?&gt;
+                    &lt;/article&gt;
+                  &lt;?php
+              }
+            } else {
+                 echo 'Sorry, no posts found.';
+            }
+          ?&gt;
+
+ &lt;/section&gt;
+
+    &lt;/div&gt;
+
+&lt;?php
+the_posts_pagination( array(
+'prev_text'          =&gt; __( 'Previous page', 'twentysixteen' ),
+'next_text'          =&gt; __( 'Next page', 'twentysixteen' ),
+'before_page_number' =&gt; '&lt;span class="meta-nav screen-reader-text"&gt;' . __( 'Page', 'twentysixteen' ) . ' &lt;/span&gt;',  ) );
+?&gt;
+
+
+
+&lt;?php wp_reset_postdata(); ?&gt;
+
+
+
+Update Prev Next Links To Link to Posts Inside a Category
+
+Change
+
+the_post_navigation( array(
+  'next_text' =&gt; '&lt;span class="meta-nav" aria-hidden="true"&gt;' . __( 'Next', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="screen-reader-text"&gt;' . __( 'Next post:', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="post-title"&gt;%title&lt;/span&gt;',
+  'prev_text' =&gt; '&lt;span class="meta-nav" aria-hidden="true"&gt;' . __( 'Previous', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="screen-reader-text"&gt;' . __( 'Previous post:', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="post-title"&gt;%title&lt;/span&gt;',
+) );
+
+
+To
+
+
+the_post_navigation( array(
+  'next_text' =&gt; '&lt;span class="meta-nav" aria-hidden="true"&gt;' . __( 'Next', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="screen-reader-text"&gt;' . __( 'Next post:', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="post-title"&gt;%title&lt;/span&gt;',
+  'prev_text' =&gt; '&lt;span class="meta-nav" aria-hidden="true"&gt;' . __( 'Previous', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="screen-reader-text"&gt;' . __( 'Previous post:', 'twentyfifteen' ) . '&lt;/span&gt; ' .
+                    '&lt;span class="post-title"&gt;%title&lt;/span&gt;',
+  'in_same_term'       =&gt; true,
+  'taxonomy'           =&gt; 'category',
+) );
+
+
+
+ Create A Short Code
+
+function display_custom_post_type(){
+     $args = array(
+        'post_type' =&gt; 'timeline',
+        'post_status' =&gt; 'publish'
+    );
+
+    $string = '';
+    $query = new WP_Query( $args );
+    if( $query-&gt;have_posts() ){
+        $string .= '&lt;dl class="timeline-list"&gt;';
+        while( $query-&gt;have_posts() ){
+            $query-&gt;the_post();
+            $string .= '&lt;dt&gt;' . get_the_title() . '&lt;/dt&gt;   &lt;dd&gt;' . get_the_content() . '&lt;/dd&gt;'   ;
+        }
+        $string .= '&lt;/dl&gt;';
+    }
+    wp_reset_postdata();
+    return $string;
+}
+
+add_shortcode( 'timeline-list', 'display_custom_post_type' );
+
+
+
+How to determine a page
+Found On Extravagonzo
+
+Determin page number by clicking ona page in the backend and locating number
+https://extravagonzofoods.com/wp-admin/post.php?post=10&action=edit
+
+
+In your code now add
+
+&lt;?php if (is_page(10)) :
+
+// your code, string style sheet or whatever
+
+elseif (is_page(11)) :
+
+// your other code, string style sheet or whatever
+
+
+else:
+// your default code, string style sheet or whatever
+
+ endif ?&gt;
+
+
+
+
+Strings And Variables
+
+&lt;?php printf('There is a difference between %s and %s', 'good', 'evil'); ?&gt;
+
+
+echo "&lt;p&gt;&lt;a href=\"";
+echo the_field('trailer_url');
+echo "\" target=\"_blank\" &gt;";
+echo "Watch The Trailer";
+echo "&lt;/a&gt;&lt;/p&gt;";
+
+
+&lt;?php printf('&lt;p&gt;&lt;a href=\”%s\” target=\"_blank\" &gt;   Watch The Trailer/p&gt;&lt;/a&gt;', the_field('trailer_url')); ?&gt;
+
+ printf('&lt;p&gt;&lt;a href=\"%s\" target=\"_blank\" &gt;Watch The Trailer &lt;/a&gt;&lt;/p&gt;', the_field('trailer_url'));
+
+
+
+
+How to call a loop using a custom short code
+
+Basic Short Code
+
+In your functions file add
+
+function shortcode_function() {
+   return "&lt;div&gt;Hello World!!!&lt;/div&gt;";
+}
+
+add_shortcode(‘call_shortcode’ , ’shortcode_function');
+
+In your page add [call_shortcode]
+
+
+Short Code with some php and passing attributes
+
+function custom_loop($atts, $content = null ) {
+
+    /* This is where you define short code attributes with default value */
+    $a = shortcode_atts( array(
+      'cat' =&gt; 'nominee',
+      'year' =&gt; 'something else',
+      'is_winner' =&gt; 'no'
+    ), $atts );
+
+     /* Conditions based on thoses attributes */
+    if($a['is_winner']  == 'yes'){
+        return "&lt;div&gt;The Categroy is {$a['cat']} The Year is {$a['year']} and is a winner&lt;/div&gt;";
+      }else{
+        return "&lt;div&gt;The Categroy is {$a['cat']} The Year is {$a['year']} and is not a winner&lt;/div&gt;";
+    }
+}
+
+add_shortcode('custom_loop_name’ , ’custom_loop');
+
+
+
+Short Code with a Loop
+
+
+function loop_func( $atts, $content = null ){
+
+  ////attribute passed through short code////
+  $a = shortcode_atts( array(
+    'category' =&gt; ' ',
+    'year' =&gt; ' '
+  ), $atts );
+
+  $cat_name = $a['category'];
+  $cat_year = $a['year'];
+
+
+  $output = "&lt;h2&gt;{$a['category']}&lt;/h2&gt;&lt;h3&gt;{$a['year']}&lt;/h3&gt; &lt;ul&gt;";
+
+
+  ////arguments for loop////
+  $args = array(
+    'post_type' =&gt; 'nominees',
+    'post_status' =&gt; 'status',
+    'category_name' =&gt; $cat_name
+  );
+
+
+
+  //// the loop////
+  $nominees_list = new WP_Query ($args);
+  while ( $nominees_list-&gt;have_posts() ) : $nominees_list-&gt;the_post();
+  $output .= "&lt;li&gt;"
+    .get_the_title().
+    "&lt;/li&gt;";
+  endwhile;
+  wp_reset_query();
+
+  return $output;
+}
+
+
+add_shortcode( 'nominee', 'loop_func' );

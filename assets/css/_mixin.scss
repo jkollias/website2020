@@ -1,0 +1,125 @@
+
+/*/////Mixins//////*/
+
+%buttons{
+  display: inline-block;
+  background: #222;
+  padding: .5em 1em;
+  font-size: 1.25em;
+  border-radius: .25em;
+  color: #fff;
+  border-width: .1em;
+}
+
+@mixin sprites($x: horizontal, $y: vertical){
+	display: block; overflow: hidden;
+	text-indent: -2000em;
+	background-image: url(../img/sprites.png);
+	background-repeat: none;
+	background-position: $x $y;
+	background-size: 400px;
+}
+
+@mixin gradient($startColor, $endColor){
+	background: $endColor;
+	background: -webkit-linear-gradient($startColor, $endColor); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient($startColor, $endColor); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient($startColor, $endColor); /* For Firefox 3.6 to 15 */
+	background: linear-gradient($startColor, $endColor); /* Standard syntax */
+}
+
+@mixin leftToRightGradient($startColor, $endColor){
+	background: $endColor;
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,$startColor), color-stop(100%,$endColor));
+	background: -webkit-linear-gradient(left,  $startColor 0%, $endColor 100%);
+	background: -o-linear-gradient(left, $startColor 0%, $endColor 100%); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, $startColor 0%, $endColor 100%); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, $startColor 0%, $endColor 100%); /* Standard syntax */
+}
+
+@mixin formInputGradient{
+  background: #f8f8f8;
+  background: -moz-linear-gradient(top,  #f8f8f8 0%, #ffffff 50%, #f8f8f8 99%);
+  background: -webkit-linear-gradient(top,  #f8f8f8 0%,#ffffff 50%,#f8f8f8 99%);
+  background: linear-gradient(to bottom,  #f8f8f8 0%,#ffffff 50%,#f8f8f8 99%);
+}
+
+@mixin center{
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+}
+
+@mixin clearFix{
+  content:'.';
+	display:block;
+	clear:both;
+	height:0;
+	visibility:hidden;
+}
+
+@mixin gallery($i,$m){
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  li{
+    float: left;
+	  $all_margin: ($i - 1) * $m;
+	  $item_width: ((100 - $all_margin) / $i) * 1%;
+	  width: $item_width;
+	  margin-right:($m) * 1%;
+    margin-bottom:($m) * 1%;
+	  list-style: none;
+	  margin-left: 0;
+  }
+  li:nth-child( #{$i}n){
+    margin-right: 0;
+    boredr-top: 1px solid #f00;
+  }
+}
+
+@mixin main-container($breakpoint:$tabPort){
+    display: block;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+    clear: both;
+    position: relative;
+    padding-right: 3%;
+    padding-left: 3%;
+    width: 100%;
+    @media only screen and (min-width: $breakpoint){
+      width: 75%;
+      max-width: 1400px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+    &:after{
+      @include clearFix;
+    }
+    &:before{
+       @include clearFix;
+    }
+}
+
+@mixin container($w,$p:0){
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	clear: both;
+	position: relative;
+	max-width: $w;
+	box-sizing: border-box;
+	width: 100%;
+	padding-left: $p;
+	padding-right: $p;
+	&:after{
+	  @include clearFix;
+	}
+	&:before{
+	   @include clearFix;
+	}
+}

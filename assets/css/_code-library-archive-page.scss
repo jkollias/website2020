@@ -1,0 +1,52 @@
+.code-library-archive-page{
+  section{
+    @include main-container;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    border-bottom: 1px solid #ccc;
+  }
+  ul.no-links{
+    a{
+      color: #222;
+      text-decoration: none;
+      pointer-events: none;
+    }
+  }
+  ul{
+    width: 100%;
+    margin: 0 auto;
+    @media only screen and (min-width: $tabPort+200px) {
+      flex-flow: row wrap;
+      display: flex;
+    }
+  }
+  li{
+    font-size: 1.6em;
+    padding: .25em 1em .25em 1em;
+    position: relative;
+    box-sizing: border-box;
+    @media only screen and (min-width: $tabPort+200px) {
+      width: 50%;
+    }
+  }
+  li:before{
+    position: absolute;
+    left: 0;
+    top: .85em;
+    width: .5em;
+    height: .5em;
+    content: " ";
+    background: $red;
+    border-radius: 50%;
+  }
+  h2{ padding: 0 0 1em 0; }
+  p{font-size: 1.6em; padding: 0 0 1em 0; }
+  pre.code{
+    background: #efefef;
+    font-family: courier;
+    font-size: 1.6em;
+    padding: 2em;
+    margin-bottom: 1em;
+    overflow-x: scroll;
+  }
+}

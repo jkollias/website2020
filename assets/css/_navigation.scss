@@ -1,0 +1,226 @@
+//
+// $phonePort: 300px;
+// $tabPort: 600px;
+// $tabLand: 800px;
+// $tabLandLarge: 1024px;
+// $monitorLarge: 1300px;
+
+
+.about-btn{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  z-index: 1000;
+  transform: translateY(0);
+  cursor: pointer;
+  display: block;
+  text-transform: uppercase;
+  transition: all 1s;
+  &:hover .icon-container{
+    background: #d00;
+  }
+  &:hover span{
+    color: #d00;
+  }
+  @media only screen and (min-width: 400px){
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.design-btn{
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  z-index: 1000;
+  cursor: pointer;
+  display: block;
+  text-transform: uppercase;
+  transition: all 1s;
+  &:hover .icon-container{
+    background: #d00;
+  }
+  &:hover span{
+    color: #d00;
+  }
+  @media only screen and (min-width: 400px){
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.web-dev-btn{
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 1000;
+  cursor: pointer;
+  display: block;
+  text-transform: uppercase;
+  transition: all 1s;
+  &:hover .icon-container{
+    background: #d00;
+  }
+  &:hover span{
+    color: #d00;
+  }
+  @media only screen and (min-width: 400px){
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.recent-work-btn{
+  position: absolute;
+  bottom: 1em;
+  border-bottom: 2px solid #222;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center bottom;
+  color: #444;
+  border-radius: .5em;
+  padding: 1em 1.5em;
+  text-transform: uppercase;
+  z-index: 100;
+  animation-name: recent-work-btn-glowing;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  &:hover{
+    border-bottom: 2px solid $red;
+    color: $red;
+  }
+  &:after{
+    content: ' ';
+    left: 50%;
+    background: #fff;
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-bottom: 2px solid #222;
+    border-right: 2px solid #222;
+    position: absolute;
+    transform: rotate(45deg) translateX(-50%);
+    z-index: -1;
+    bottom: -1.1em;
+    overflow: hidden;
+  }
+  &:hover:after{
+    border-bottom: 2px solid $red;
+    border-right: 2px solid $red;
+  }
+}
+
+@keyframes recent-work-btn-glowing{
+  0%{ transform: translateX(-50%) scale(1);   }
+  100%{ transform: translateX(-50%) scale(1.02); }
+}
+
+.icon-container{
+  background: #000;
+  width: 4em;
+  height: 4em;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+
+}
+.icon-container i{
+  color: #fff;
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+.nav-panel{
+   background: rgba(255,255,255,.99);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -100;
+   font-weight: 100;
+   text-align: center;
+   text-transform: uppercase;
+   opacity: 0;
+   // transition: z-index .25s, opacity: .5s 1s;
+   transition: z-index .25s ease-out, opacity 0.3s ease 0.25s;
+   nav{
+     @include center;
+   }
+   a{
+     font-size: 2.5em;
+     white-space: nowrap;
+     @media only screen and (min-width: $tabPort){
+       font-size: 4.5em;
+     }
+     @media only screen and (min-width: $monitorLarge){
+       font-size: 6em;
+     }
+   }
+}
+
+#web-panel.activated,
+#design-panel.activated,
+#about-panel.activated
+{
+  z-index: 1020;
+  opacity: 1;
+}
+
+.nav-panel .close-btn{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  height: 5em;
+  width: 5em;
+  &:before{
+    content:'.';
+    border-right: 1px solid $red;
+    display: block;
+    height: 5em;
+    width: 1px;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    text-indent: 10000em;
+    //overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    transition: all .5s 1s;
+  }
+  &:after{
+    content:'.';
+    border-right: 1px solid $red;
+    display: block;
+    height: 5em;
+    width: 1px;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    text-indent: 10000em;
+    //overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    transition: all .5s 1s;
+  }
+}
+
+#web-panel.activated .close-btn:before,
+#design-panel.activated .close-btn:before,
+#about-panel.activated .close-btn:before{
+   transform: rotate(45deg);
+   opacity: 1;
+}
+
+#web-panel.activated .close-btn:after,
+#design-panel.activated .close-btn:after,
+#about-panel.activated .close-btn:after
+{
+   opacity: 1;
+}

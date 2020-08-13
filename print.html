@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Jason Kollias Print</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+
+<link href="assets/css/reset.css" rel="stylesheet">
+
+<link href="assets/css/layout.css" rel="stylesheet">
+
+<style>
+
+  .pop-up{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    height: 100%;
+
+    min-height: 100%;
+
+    max-height: 100%;
+
+    width: 100%;
+
+    background: rgba(0,0,0,.9);
+
+    opacity: 0;
+
+    transition: all .5s;
+
+    overflow-y: scroll;
+
+    z-index: 1000;
+
+  }
+
+
+
+  .pop-up img{
+
+    width: 70%;
+
+    display: block;
+
+    /* margin: 0 auto; */
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+
+  }
+
+
+
+  .close-btn{
+
+    position: fixed;
+
+    top: 2em;
+
+    right: 2em;
+
+    width: 4em;
+
+    height: 4em;
+
+    display: block;
+
+  }
+
+  .close-btn span{display: none;}
+
+  .close-btn:before{
+
+    content: " ";
+
+    display: block;
+
+    height: 100%;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    border-left: .1em solid #fff;
+
+    transform: rotate(45deg) translate(-50%);
+
+  }
+
+  .close-btn:after{
+
+    content: " ";
+
+    display: block;
+
+    height: 100%;
+
+    top: 0;
+
+    position: absolute;
+
+    right: 50%;
+
+    border-left: .1em solid #fff;
+
+    transform: rotate(-45deg) translate(-50%);
+
+  }
+
+  .fade-in{
+
+    opacity: 1;
+
+    transition: all 1s;
+
+  }
+
+
+
+  .fade-out{
+
+    opacity: 0;
+
+    transition: all 1s;
+
+  }
+
+
+
+  .thumbnail-container img{border: 1px solid #ccc;}
+
+</style>
+
+</head>
+
+
+
+<body class="print-archive-page">
+
+  <audio id="applause">
+
+   <source src="assets/sound/applause.mp3" type="audio/mpeg">
+
+ </audio>
+
+  <header class="webdesign-project-title">
+
+    <a href="index.html" class="back-link">
+
+      <i class="fa fa-sort-down"></i>
+
+      <span class="screen-reader">Back</span>
+
+    </a>
+
+    <h1>Print</h1>
+
+  </header>
+
+  <div class="offset"></div>
+
+
+
+  <main>
+
+    <!-- <h2>Ads/Flyers</h2> -->
+
+    <ul class="print-archive-list">
+
+      <li>
+
+        <button onclick="showPopup('webline-responsive-design');">
+
+          <div class="thumbnail-container">
+
+              <img src="assets/img/print/webline-responsive-design-large.jpg">
+
+          </div>
+
+          <label>Webline: <br>
+
+          Responsive Design Poster</label>
+
+        </button>
+
+      </li>
+
+      <li>
+
+        <button onClick="showPopup('chalos-ad');">
+
+          <div class="thumbnail-container">
+
+            <img src="assets/img/print/chalos-ad-large.jpg">
+
+          </div>
+
+          <label>Chalos Ad</label>
+
+        </button>
+
+      </li>
+
+      <li>
+
+        <button onClick="showPopup('herematch-card');">
+
+          <div class="thumbnail-container">
+
+              <img src="assets/img/print/herematch-card-large.jpg">
+
+          </div>
+
+          <label>HereMatch</label>
+
+        </button>
+
+      </li>
+
+      <li>
+
+        <button onClick="showPopup('herematch-card2');">
+
+          <div class="thumbnail-container">
+
+              <img src="assets/img/print/herematch-card2-large.jpg">
+
+          </div>
+
+          <label>HereMatch</label>
+
+        </button>
+
+      </li>
+
+
+
+    </ul>
+
+<!--
+
+    <h2>Trade Show Banners</h2> -->
+
+
+
+
+
+  </main>
+
+
+
+<script src="assets/js/interactive.js" type="text/javascript"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119261596-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119261596-1');
+</script>
+
+
+</body>
+
+</html>

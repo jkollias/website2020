@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Jason Kollias</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+
+<link href="assets/css/reset.css" rel="stylesheet">
+
+<link href="assets/css/layout.css" rel="stylesheet">
+
+
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+  <div id="navigation">
+
+
+
+    <button onClick="toggleMenu('about-panel')" class="about-btn">
+
+      <div class="icon-container">
+
+        <i class="fa fa-drivers-license"></i>
+
+      </div>
+
+      <span>About</span>
+
+    </button>
+
+
+
+    <button onClick="toggleMenu('design-panel')" class="design-btn">
+
+      <div class="icon-container">
+
+        <i class="fa fa-eye"></i>
+
+      </div>
+
+      <span>My Work</span>
+
+    </button>
+
+
+
+    <button class="recent-work-btn">Recent Work</button>
+
+
+
+    <section id="about-panel"  class="nav-panel">
+
+      <button class="close-btn" onClick="toggleMenu('about-panel');">
+
+        <span class="screen-reader">Close</span>
+
+      </button>
+
+      <nav>
+
+        <ul>
+
+          <li><a href="skills.html">Skills</a></li>
+
+          <!-- <li><a href="interests.html">Interests</a></li> -->
+
+          <li><a href="bio.html">Bio</a></li>
+
+          <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+      </nav>
+
+    </section>
+
+
+
+    <section id="design-panel" class="nav-panel">
+
+      <button class="close-btn" onClick="toggleMenu('design-panel');">
+
+        <span class="screen-reader">Close</span>
+
+      </button>
+
+      <nav>
+
+        <ul>
+
+          <li><a href="website-projects.html">Web Sites</a></li>
+
+          <li><a href="logos.html">Logos</a></li>
+
+          <li><a href="print.html">Print</a></li>
+
+          <li><a href="code-library.html">Code Library</a></li>
+
+          <!-- <li><a href="#">Games</a></li> -->
+
+        </ul>
+
+      </nav>
+
+    </section>
+
+
+
+
+
+  </div>
+
+
+
+
+
+<main>
+
+  <section class="intro-block full-page">
+
+    <div class="logo">
+
+      <img src="assets/img/logo.svg">
+
+      Jason Kollias
+
+    </div>
+
+  </section>
+
+
+
+
+
+  <section class="project-block full-page asas-bg" id="recent-work">
+
+  	  <dl class="project">
+
+        <dt>
+
+          <h2>ASAS Anual Report</h2>
+
+          <img src="assets/img/asas-ar-display3.png" class="screen-display">
+
+        </dt>
+
+        <dd>
+
+          <a class="view-site-btn" href="http://www.afterschoolallstars.org/2017ar/" target="_blank">View Site</a>
+
+        </dd>
+
+      </dl>
+
+  </section>
+
+
+
+</main>
+
+
+
+
+
+<script src="assets/js/interactive.js" type="text/javascript"></script>
+
+
+
+<!-- rAF polyfill -->
+
+<script>
+
+
+
+(function() {
+
+  var lastTime = 0;
+
+  var vendors = ['ms', 'moz', 'webkit', 'o'];
+
+  for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+
+      window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+
+      window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+
+                                 || window[vendors[x]+'CancelRequestAnimationFrame'];
+
+  }
+
+
+
+  if (!window.requestAnimationFrame)
+
+      window.requestAnimationFrame = function(callback, element) {
+
+          var currTime = new Date().getTime();
+
+          var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+
+          var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+
+            timeToCall);
+
+          lastTime = currTime + timeToCall;
+
+          return id;
+
+      };
+
+
+
+  if (!window.cancelAnimationFrame)
+
+      window.cancelAnimationFrame = function(id) {
+
+          clearTimeout(id);
+
+      };
+
+}());
+
+
+
+document.querySelector('.recent-work-btn').addEventListener('click', function(e) {
+
+  e.preventDefault();
+
+  //console.log("clicked");
+
+  document.querySelector('#recent-work').scrollIntoView({ behavior: 'smooth' });
+
+});
+
+
+
+</script>
+
+
+
+<script src="assets/js/smoothscroll.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119261596-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119261596-1');
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Jason Kollias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+<link href="../assets/css/reset.css" rel="stylesheet">
+<link href="../assets/css/layout.css" rel="stylesheet">
+
+</head>
+
+<body class="code-library-archive-page">
+
+  <header class="webdesign-project-title">
+    <a href="../code-library.html" class="back-link">
+      <i class="fa fa-sort-down"></i>
+      <span class="screen-reader">Back</span>
+    </a>
+    <h1>Wordpress PHP</h1>
+  </header>
+  <div class="offset"></div>
+  <main>
+
+     <section>
+      <h2>Add A Custom Widget</h2>
+      <p>In your functions.php, add in this code</p>
+
+      <pre class="code">
+register_sidebar( array(
+  'name' =&gt; __( 'Custom Widget Area'),
+  'id' =&gt; 'custom-widget-area',
+  'description' =&gt; __( 'An optional custom widget area for your site', 'twentyseventeen' ),
+  'before_widget' =&gt; '&lt;div id="%1$s" class="widget-container %2$s"&gt;',
+  'after_widget' =&gt; "&lt;/div&gt;",
+  'before_title' =&gt; '&lt;h3 class="widget-title"&gt;',
+  'after_title' =&gt; '&lt;/h3&gt;',
+) );
+      </pre>
+      <p>In the file you want to add the widget, add this code</p>
+      <pre class="code">
+&lt;?php
+  if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar(&quot;PUT NAME OF CUSTOM WIDGET HERE&quot;) ) : ?&gt;
+&lt;?php endif; ?&gt;
+      </pre>
+     </section>
+
+
+
+
+  </main>
+
+<script src="../assets/js/interactive.js" type="text/javascript"></script>
+
+</body>
+</html>

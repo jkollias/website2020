@@ -1,0 +1,227 @@
+.content-container{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.interests, .bio, .skills{
+  .container{ @include main-container; }
+  p{
+    margin-bottom: 2em;
+    font-size: 1.6em;
+  }
+  ul{
+    font-size: 1.6em;
+    margin: 0;
+    padding: 0;
+  }
+  figure{
+    width: 80%;
+    height: 0;
+    padding-bottom: 80%;
+    border-radius: 50%;
+    background: #333;
+    display: block;
+    margin: 0 auto 2em;
+  }
+  ul.interests-list{
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+  }
+  ul.interests-list li{
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 2.5em 0;
+    border: 1px solid #ccc;
+    @media only screen and (min-width: $tabLand){
+      flex-basis: 33.3333%;
+    }
+  }
+}
+
+.skillsets i{
+  font-size: 5em;
+  display: block;
+  text-align: center;
+  margin: 0 0 .1em
+}
+
+.blurb{
+  font-size: 2em;
+  text-align: center;
+  padding: 2em 0;
+  .container{
+    @include main-container;
+  }
+}
+
+.skillsets{
+    @include main-container;
+    max-width: 300px;
+    margin: 0 auto;
+    h2{ text-align: center; padding-bottom: 1em;}
+    @media only screen and (min-width: $tabLand){
+      flex-basis: 33.3333%;
+      max-width: 870px;
+      // h2{ text-align: left; }
+      .container{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .container section{
+      flex-basis: 30%;
+      font-size: 1.6em;
+    }
+    ul{
+      margin-left: 0;
+      margin-bottom: 3em;
+    }
+    ul li{
+      position: relative;
+      padding-left: 1em;
+      padding-top: .25em;
+      padding-bottom: .25em;
+
+    }
+    ul li:before{
+      position: absolute;
+      left: 0;
+      top: .7em;
+      height: .5em;
+      width: .5em;
+      display: block;
+      content: ' ';
+      border-radius: 50%;
+      background: $darkRed;
+    }
+}
+
+.bio-page{
+   .container{
+     @include main-container;
+     @media only screen and (min-width: $tabLand){
+       display: flex;
+     }
+     padding-top: 2.5em;
+   }
+   .container .bio{
+     flex-basis: 60%;
+   }
+   .container .resources{
+     flex-basis: 40%;
+     margin-top: 2em;
+     box-sizing: border-box;
+     font-size: 1.6em;
+     @media only screen and (min-width: $tabLand){
+       padding-left: 5em;
+       margin-top: 0;
+     }
+   }
+   .container .resources ul{
+     margin-bottom: 2em;
+   }
+   .container .resources ul{margin-left: 0;}
+   .container .resources ul li{
+     position: relative;
+     padding-left: 1em;
+     padding-top: .25em;
+     padding-bottom: .25em;
+
+   }
+   .container .resources ul li:before{
+     position: absolute;
+     left: 0;
+     top: .7em;
+     height: .5em;
+     width: .5em;
+     display: block;
+     content: ' ';
+     border-radius: 50%;
+     background: $darkRed;
+   }
+
+}
+
+.contact-page{
+  .container{
+    @include main-container;
+    padding-top: 2.5em;
+  }
+  p{
+    font-size: 1.6em;
+    text-align: center;
+    padding-bottom: 3em;
+  }
+}
+
+.contact-info{
+
+  font-size: 1.6em;
+  @media only screen and (min-width: $tabLand){
+    display: flex;
+  }
+  .contact-form{
+    flex-basis: 50%;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 3em;
+    margin-bottom: 3em;
+    box-sizing: border-box;
+    border-bottom: 1px solid #adadad;
+    @media only screen and (min-width: $tabLand){
+      border-right: 1px solid #adadad;
+      padding-left: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+  label{
+    display: block;
+    padding-bottom: 1em;
+  }
+
+  input[type="text"]{
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: linear-gradient( #efefef, #dddddd );
+    padding: .5em .5em;
+    width: 100%;
+  }
+  textarea{
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: linear-gradient( #efefef, #dddddd );
+    display: block;
+    width: 100%;
+    padding: .5em;
+    font-family: "Roboto";
+    height: 100px;
+  }
+  input[type="submit"]{
+    background: #222;
+    color: #fff;
+    border-radius: .25em;
+    padding: 1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  input[type="submit"]:hover{ background: $red; }
+  input[type="submit"]:active{
+    background: darken($red,10%);
+    cursor: pointer;
+  }
+  .contact-links{
+    flex-basis: 50%;
+    align-self: center;
+    padding-left: 3em;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+
+
+.form-message{ margin-top: 4em; }

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Jason Kollias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+<link href="../assets/css/reset.css" rel="stylesheet">
+<link href="../assets/css/layout.css" rel="stylesheet">
+
+</head>
+
+<body class="code-library-archive-page">
+
+  <header class="webdesign-project-title">
+    <a href="../code-library.html" class="back-link">
+      <i class="fa fa-sort-down"></i>
+      <span class="screen-reader">Back</span>
+    </a>
+    <h1>Wordpress PHP</h1>
+  </header>
+  <div class="offset"></div>
+  <main>
+
+     <section>
+      <h2>Adding a separate nav to somewhere else in the template.</h2>
+      <p>In your header.php, add in this code</p>
+
+      <pre class="code">
+&lt;?php
+
+$defaults = array(
+    'theme_location'  =&gt; '',
+    'menu'            =&gt; 'Name Of The Menu',
+    'container'       =&gt; ‘nav’,
+    'container_class' =&gt; '',
+    'container_id'    =&gt; '',
+    'menu_class'      =&gt; 'menu',
+    'menu_id'         =&gt; '',
+    'echo'            =&gt; true,
+    'fallback_cb'     =&gt; 'wp_page_menu',
+    'before'          =&gt; '',
+    'after'           =&gt; '',
+    'link_before'     =&gt; '',
+    'link_after'      =&gt; '',
+    'items_wrap'      =&gt; '&lt;ul id="%1$s" class="%2$s"&gt;%3$s&lt;/ul&gt;',
+    'depth'           =&gt; 0,
+    'walker'          =&gt; ''
+);
+wp_nav_menu( $defaults );
+
+?&gt;
+      </pre>
+      <p>For 'Name Of The Menu' add the name of your menu.
+</p>
+     </section>
+
+
+
+
+  </main>
+
+<script src="../assets/js/interactive.js" type="text/javascript"></script>
+
+</body>
+</html>

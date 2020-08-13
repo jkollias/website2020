@@ -1,0 +1,99 @@
+#contact-panel{
+  background: #444;
+  display: block;
+	z-index: 2000;
+	bottom: -80px;
+  transition: bottom 1s;
+	height: 80px;
+	width: 100%;
+	position: fixed;
+  &.activated{ bottom: 0; }
+  #contact-btn{
+    display: block;
+    background: #000;
+    position: absolute;
+    top: -8em;
+    right: 0;
+    border: none;
+    border-top: .9em $red solid;
+    color: #fff;
+    height: 8em;
+    width: 6em;
+    box-sizing: border-box;
+    padding: 1em;
+    cursor: pointer;
+  }
+  #contact-btn.activated, #contact-btn:hover{
+    background: #444;
+  }
+  .form-container{
+    display: block;
+    max-width: 600px;
+    padding: 1em 0;
+    margin: 0 auto;
+  }
+  .form-container form{
+    display: flex;
+  }
+  .form-container form input{
+    flex-grow: 1;
+    margin: 0 2.5%;
+  }
+  .form-container input[type="text"]{
+    padding: .5em 1em;
+  }
+  .form-container input[type="submit"]{
+    @extend %buttons;
+    font-size: .75em;
+    background: $red;
+    border: none;
+  }
+}
+
+
+#more-info-panel{
+  position: fixed;
+  left: -30%;
+  top: 0;
+  height: 100%;
+  width: 30%;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 5em 1em;
+  background: $darkRed;
+  transition: all 1s;
+  h2{
+    font-size: 1.6em;
+    margin-top: 1em;
+    font-family: $headingText;
+    font-weight: 300;
+  }
+  p{ margin-bottom: 1em;}
+  a{
+    @extend %buttons;
+    background: #fff;
+    font-size: .9em;
+    color: $darkRed;
+  }
+  #more-info-btn{
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5em;
+    right: -5em;
+    background: $red;
+    padding: 1em;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  #more-info-btn:hover, #more-info-btn.activated{
+    background: $darkRed;
+  }
+}
+
+
+#more-info-panel.activated{
+  left: 0;
+}
