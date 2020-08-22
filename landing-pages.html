@@ -37,10 +37,10 @@
 			.psd-html-comparison--container{
 				font-size: min(3vw, 25px);
 				position: relative;
-				outline: 1px solid #f00;
+				width: 32.5em;
+				margin-left: auto;
+				margin-right: auto;
 			}  
-
-
 
 			.psd-html-comparison--container .place-holder{
 				width: 100%;
@@ -56,9 +56,13 @@
 				transition: all 1s;
 			}
 
+			.psd-html-comparison--container .psd-screen-cap{
+				margin-left: 0;
+			}
+
 			.psd-html-comparison--container .html-screen-cap{
 				position: absolute;
-				right: 0;
+				left: calc(100% - 15.5em);
 				top: 0;
 			}
 
@@ -80,11 +84,34 @@
 
 			.psd-html-comparison--container.compare .html-screen-cap{
 				left: 50%;
-				right: auto;
 				transform: translateX(-50%);
 				opacity: .5;
 				transition: all 1s;
 			}
+
+			.landing-page-html-link{
+				text-align: center;
+				font-size: 1.5vw;
+				padding: 1em;
+			}
+
+			.landing-page-html-link a{
+				font-weight: 900;
+				border-bottom: .1em solid;
+				text-transform: uppercase;
+			}
+
+			.landing-page-features h2{
+				text-align: center;
+				font-size: 5vw;
+			}
+
+			.landing-page-credits{
+				text-align: center;
+
+			}
+
+
 
 
 
@@ -107,27 +134,31 @@
 
 	   </section>
 
-	<script>
-		function comparePsdAndHtml(){
-			console.log("Clicked");
-			const container = document.querySelector(".psd-html-comparison--container");
-			if(container.classList.contains("compare")){
-				container.classList.remove("compare");
-			}else{
-				container.classList.add("compare");
+		<script>
+			function comparePsdAndHtml(){
+				console.log("Clicked");
+				const container = document.querySelector(".psd-html-comparison--container");
+				if(container.classList.contains("compare")){
+					container.classList.remove("compare");
+				}else{
+					container.classList.add("compare");
+				}
+				
 			}
-			
-		}
-	</script>	
+		</script>	
+       
+		<section class="landing-page-html-link">
+			<a href="#">Checkout the Full Page</a>
+		</section>
+		
+		<section class="landing-page-features">
+			    <h2>Features</h2>
+		</section>
+		<section class="landing-page-credits">
+			    <strong>Design by</strong> Christine Elmoore<br>
+			    <strong>Backend Functionality by</strong> John Cook
+		</section>
 
-	   <section>
-	   	    <h2>Features</h2>
-	        
-	   </section>
-	   <section>
-	   	    Design by: Christine Elmoore<br>
-	   	    Backend Functionality: John Cook
-	   </section> 
   </main>
 
 
