@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Jason Kollias | Gordon L. Seaman</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+<link href="assets/css/reset.css" rel="stylesheet">
+<link href="assets/css/layout.css" rel="stylesheet">
+
+<style>
+
+</style>	
+
+</head>
+
+<style>
+	.site-header{
+		background: #222;
+		color: #fff;
+			
+	}
+
+	.container{
+		max-width: 70em;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		padding: 1em;
+		font-size: 1.5vw;
+		align-items: center;
+	}
+
+	.site-logo{
+		flex-grow: 1;
+		font-size: 1em;
+	}
+
+	.site-navigation ul{
+		display: flex;
+	}
+
+	.site-navigation a{
+		color: #fff;
+		font-size: .75em;
+		padding: 1em;
+		text-transform: uppercase;
+	}
+
+	.site-navigation a:hover{
+		color: rgba(255,255,255, .75);
+	}
+
+	.site-navigation a:active{
+		color: rgba(255, 255, 255, .5);
+	}
+
+	.site-content{
+		margin-top: 3vw;
+
+	}
+
+</style>	
+
+<body class="landing-page-detail">
+
+  <header class="site-header">
+  	<div class="container">
+  		<h1 class="site-logo">
+			<a href="#">Jason Kollias</a>
+		</h1>
+		<nav class="site-navigation">
+			<ul>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Resume</a></li>
+			</ul>	
+		</nav>
+	</div>
+  </header>
+
+  
+
+  <main class="site-content">
+       <style>
+			.psd-html-comparison--container{
+				/*/font-size: min(3vw, 25px);/*/
+				font-size: 3vw;
+				position: relative;
+				width: 25.5em;
+				margin-left: auto;
+				margin-right: auto;
+			}  
+
+			.psd-html-comparison--container .place-holder{
+				width: 100%;
+				height: 0;
+				padding-bottom: 110%;
+			}
+
+			.psd-html-comparison--container .psd-screen-cap,
+			.psd-html-comparison--container .html-screen-cap{
+				width: 15.5em;
+				text-align: center;
+				margin: 0;
+				transition: all 1s;
+				font-size: 2.25vw;
+			}
+
+			.psd-html-comparison--container .psd-screen-cap{
+				margin-left: 0;
+			}
+
+			.psd-html-comparison--container .html-screen-cap{
+				position: absolute;
+				left: calc(100% - 15.5em);
+				top: 0;
+			}
+
+			.compare-btn--container{
+				text-align: center;
+				margin-bottom: 30px;
+			}
+
+			.compare-btn{
+				border: .125em solid #333;
+				padding: .5em 2em;
+				font-size: 1.5vw;
+				border-radius: .25em;
+				text-transform: uppercase;
+			}
+
+			.compare-btn:hover{
+				background: #333;
+				color: #fff;	
+			}
+
+			.compare-btn:active{
+				background: #222;
+				border-color: #222;
+			}
+
+			.psd-html-comparison--container.compare .psd-screen-cap{
+				margin-left: 50%;
+				transform: translateX(-50%);
+				transition: all 1s;
+			}
+
+			.psd-html-comparison--container.compare .html-screen-cap{
+				left: 50%;
+				transform: translateX(-50%);
+				opacity: .5;
+				transition: all 1s;
+			}
+
+			.landing-page-links{
+				text-align: center;
+				font-size: 1.5vw;
+				padding: 2em 4em 4em 4em;
+			}
+
+			.landing-page-links a{
+				font-weight: 900;
+				border-bottom: .1em solid;
+				text-transform: uppercase;
+				margin: 0 2em;
+				display: inline-block;
+			}
+
+			.landing-page-links a:hover{
+				border-bottom: 0;
+			}
+
+			.landing-page-features h2{
+				text-align: center;
+				font-size: 3vw;
+			}
+
+			.landing-page-features p{
+				text-align: center;
+				font-size: 1.5vw;
+			}
+
+			.landing-page-credits{
+				text-align: center;
+				border-top: .1em solid #eee;
+				padding-top: 2em;
+				margin-top: 2em;
+				margin-left: auto;
+				margin-right: auto;
+				padding-bottom: 2em;
+				font-size: 1.25vw;
+				max-width: 40em;
+
+			}
+
+       </style>	
+
+       <section class="compare-btn--container">
+	   		<button onClick="comparePsdAndHtml();" class="compare-btn">Compare</button>
+       </section>
+
+	   <section class="psd-html-comparison--container">
+	   		<div class="psd-screen-cap">
+	   			<div class="place-holder" style="background: #000;"></div>
+	   			<div>PSD Screen Cap</div>
+	   		</div>	
+	   		<div class="html-screen-cap">
+	   			<div class="place-holder" style="background: #f00"></div>
+	   			<div>HTML Screen Cap</div>
+	   		</div>	
+
+	    </section>
+
+		<script>
+			function comparePsdAndHtml(){
+				const container = document.querySelector(".psd-html-comparison--container");
+				const compareBtn = document.querySelector(".compare-btn")
+				if(container.classList.contains("compare")){
+					container.classList.remove("compare");
+					compareBtn.textContent = "Compare";
+				}else{
+					container.classList.add("compare");
+					compareBtn.textContent = "Seperate";
+				}
+				
+			}
+		</script>	
+       
+		<section class="landing-page-links">
+			<a href="#">Checkout the Full Page</a>
+			<a href="#">Checkout the Git Code</a>
+		</section>
+		
+		<section class="landing-page-features">
+			    <h2>Features</h2>
+			    <p>Fully repsonsive, ties to </p>
+		</section>
+		<section class="landing-page-credits">
+			    <strong>Designed by</strong> Christine Elmoore <br>
+			    <strong>Backend Functionality by</strong> John Cook
+		</section>
+
+  </main>
+
+
+<script src="assets/js/interactive.js" type="text/javascript"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119261596-1"></script>
+<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-119261596-1');
+</script>
+
+
+</body>
+
+</html>
