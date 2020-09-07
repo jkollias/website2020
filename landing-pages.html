@@ -9,22 +9,46 @@
 <title>Jason Kollias | Gordon L. Seaman</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<script src="https://kit.fontawesome.com/9dfb862018.js" crossorigin="anonymous"></script>
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> -->
 <link href="assets/css/reset.css" rel="stylesheet">
 <link href="assets/css/layout.css" rel="stylesheet">
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
-</style>	
 
 </head>
 
+
+<!-- template - styles -->
 <style>
+
+	:root{
+		--light-grey: #efefef;
+		--main-color: #222;
+		--accent-color: #d00;
+	}
+
+    html, body{
+    	height: auto;
+    	min-height: none;
+    	max-height: none;
+    }
+
+	body{
+		font-family: "Roboto Condensed";
+		 
+	}	
+
 	.site-header{
 		background: #222;
 		color: #fff;
-			
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 100;
 	}
 
 	.container{
@@ -32,7 +56,7 @@
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
-		padding: 1em;
+		padding: 0 1em;
 		font-size: 1.5vw;
 		align-items: center;
 	}
@@ -40,6 +64,10 @@
 	.site-logo{
 		flex-grow: 1;
 		font-size: 1em;
+	}
+
+	.site-logo img{
+		width: 8em;
 	}
 
 	.site-navigation ul{
@@ -53,6 +81,7 @@
 		text-transform: uppercase;
 	}
 
+	.site-navigation > ul > li:hover > a,
 	.site-navigation a:hover{
 		color: rgba(255,255,255, .75);
 	}
@@ -61,9 +90,82 @@
 		color: rgba(255, 255, 255, .5);
 	}
 
-	.site-content{
-		margin-top: 3vw;
 
+	.site-navigation ul ul{
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		position: fixed;
+		margin: 0;
+		padding: 0;
+		top: 2.5em;
+		left: 0;
+		//background: #000;
+		background: #fff;
+		z-index: -100;
+		opacity: 0;
+		padding: .5em; 
+		transition: opacity .5s;
+	}
+
+	.site-navigation ul ul a{
+     	color: #000;
+	}
+
+	.site-navigation ul ul a:hover{
+     	color: #d00;
+	}
+
+	.site-navigation > ul > li{
+		padding: .5em 1em;
+		position: relative;
+	}
+
+	.site-navigation > ul > li.has-submenu:after{
+		height: .75em;
+		width: .75em;
+		content: " ";
+		background: #fff;
+		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: -.5em;
+		transform: translateX(-50%) rotate(45deg);
+		transition: opacity .5s;
+		opacity: 0;
+		z-index: -100;
+	}
+
+	.site-navigation ul li:hover ul{
+		opacity: 1;
+		z-index: 100;
+		transition: opacity .5s;
+	}
+
+	.site-navigation > ul > li.has-submenu:hover:after{
+		opacity: 1;
+		z-index: 100;
+		transition: opacity .5s;
+	}
+
+	.site-navigation ul ul li{
+		padding: 0 1em;
+		border-right: 1px solid #000;
+	}
+
+	.site-navigation ul ul li:last-child{
+		border-right: none;
+	}
+
+	.site-content{
+		margin-top: 4vw;
+		margin-bottom: 4vw;
+	}
+
+	footer.site-footer{
+		padding: 1em;
+		background: #222;
+		color: #fff;
 	}
 
 </style>	
@@ -73,12 +175,21 @@
   <header class="site-header">
   	<div class="container">
   		<h1 class="site-logo">
-			<a href="#">Jason Kollias</a>
+			<a href="#"><img src="assets/img/jkollias-logo.png" alt="Jason Kollias"></a>
 		</h1>
 		<nav class="site-navigation">
 			<ul>
-				<li><a href="#">Projects</a></li>
+				<li><a href="#">Home</a></li>
+				<li class="has-submenu"><a href="#">Projects</a>
+					<ul>
+						<li><a href="#">Landing Pages</a></li>
+						<li><a href="#">Websites</a></li>
+						<li><a href="#">Things</a></li>
+						<li><a href="#">Games</a></li>
+					</ul>
+				</li>
 				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
 				<li><a href="#">Resume</a></li>
 			</ul>	
 		</nav>
@@ -89,6 +200,62 @@
 
   <main class="site-content">
        <style>
+       		.landing-page-banner{
+       			background: #efefef;
+       			min-height: 50vw;
+       			margin-bottom: 5vw;
+       		}
+
+       		.landing-page-banner .page-title{
+       			font-size: 4vw;
+       			background : none;
+       			border-bottom: none;
+       			font-weight: 700;
+       			position: static;
+       		}
+
+       		.landing-page-banner-image{
+				display: block;
+				font-size: 5vw;
+				width: 10em;
+				height: auto;
+				margin: 0 auto;
+			}
+
+			@media (min-width:768px){
+				.landing-page-banner {
+					display: grid;
+					grid-template-columns: 60% 40%; 
+					grid-template-rows: 50% 50%;
+					grid-template-areas: 
+					" image title"
+					" image links";
+				}
+
+				.landing-page-banner-image{
+					grid-area: image;
+					grid-column-start: 
+				}
+
+				.landing-page-banner .page-title{
+					grid-area: title;
+					text-align: left;
+				}
+
+				.landing-page-banner .project-type{
+					font-size:.75em;
+					display: block;
+				}
+
+				.landing-page-banner .banner-links{
+					grid-area: links;
+				}
+
+
+				
+			}
+
+
 			.psd-html-comparison--container{
 				/*/font-size: min(3vw, 25px);/*/
 				font-size: 3vw;
@@ -162,19 +329,36 @@
 			.landing-page-links{
 				text-align: center;
 				font-size: 1.5vw;
-				padding: 2em 4em 4em 4em;
+				margin: 4em 0;
+				padding: 4em 4em 4em 4em;
+				background: #efefef;
 			}
 
 			.landing-page-links a{
-				font-weight: 900;
-				border-bottom: .1em solid;
+				font-weight: 400;
 				text-transform: uppercase;
 				margin: 0 2em;
 				display: inline-block;
+				text-decoration: none;
+				color: #333;
+				background: #fff;
+				border-radius: .5em;
+				padding: 1em;
+			}
+
+			.landing-page-links a label{
+				border-bottom: .1em solid;
+			}
+
+			.landing-page-links a i{
+				font-size: 2em;
+				vertical-align: middle;
+				margin-right:.5em;
 			}
 
 			.landing-page-links a:hover{
 				border-bottom: 0;
+				color: #666;
 			}
 
 			.landing-page-features h2{
@@ -197,16 +381,49 @@
 				padding-bottom: 2em;
 				font-size: 1.25vw;
 				max-width: 40em;
-
 			}
 
-       </style>	
+			.landing-page-credits h2{
+				font-size: 3vw;
+			}
 
-       <section class="compare-btn--container">
-	   		<button onClick="comparePsdAndHtml();" class="compare-btn">Compare</button>
-       </section>
+			.landing-page-credits p{
+				font-size: 1.5vw;
+				margin-top: .5em;
+			}
 
-	   <section class="psd-html-comparison--container">
+			.landing-page-credits ul{
+				margin-top: .5em;
+				margin-left: 0;
+			}
+
+		</style>	
+
+
+		
+
+
+		<section class="landing-page-banner">
+			<h1 class="page-title">
+				Falscara
+				<span class="project-type">Landing Page<span>
+			</h1>
+
+			<img src="assets/img/computer-monitor.png" class="landing-page-banner-image">
+			<div class="banner-links">
+				<a href="#">
+					<i class="fab fa-github"></i>
+					Checkout the Git Code
+				</a>
+				<a href="#">
+					<i class="fa fa-desktop"></i>
+					Checkout the Full Page
+				</a>
+			</div>		
+		</section>	
+
+      
+	    <section class="psd-html-comparison--container">
 	   		<div class="psd-screen-cap">
 	   			<div class="place-holder" style="background: #000;"></div>
 	   			<div>PSD Screen Cap</div>
@@ -217,6 +434,11 @@
 	   		</div>	
 
 	    </section>
+
+	    <section class="compare-btn--container">
+	   		<button onClick="comparePsdAndHtml();" class="compare-btn">Compare</button>
+        </section>
+
 
 		<script>
 			function comparePsdAndHtml(){
@@ -234,21 +456,37 @@
 		</script>	
        
 		<section class="landing-page-links">
-			<a href="#">Checkout the Full Page</a>
-			<a href="#">Checkout the Git Code</a>
+			<a href="#">
+				<i class="fab fa-github"></i>
+				Checkout the Git Code
+			</a>
+			<a href="#">
+				<i class="fa fa-desktop"></i>
+				Checkout the Full Page
+			</a>
 		</section>
 		
 		<section class="landing-page-features">
-			    <h2>Features</h2>
-			    <p>Fully repsonsive, ties to </p>
+		    <h2>Features</h2>
+		    <p>Fully repsonsive, ties to a custom back end add to cart magento block. </p>
 		</section>
 		<section class="landing-page-credits">
-			    <strong>Designed by</strong> Christine Elmoore <br>
-			    <strong>Backend Functionality by</strong> John Cook
+		    <h2>Project Credits</h2>
+		    <p>This is a team effort. Here are some of the other people on that team.</p>
+		    <ul>
+		    	<li>Frontend Development by <strong>Me Jason Kollias</strong></li>
+		    	<li>Designed by <strong>Christine Elmoore</strong></li>
+		    	<li>Backend Functionality by <strong>John Cook</strong></li>
+		    </ul>
 		</section>
 
   </main>
 
+<footer class="site-footer">
+	<div class="container">
+   		JKollias &copy; 2020
+    </div>
+</footer>
 
 <script src="assets/js/interactive.js" type="text/javascript"></script>
 
